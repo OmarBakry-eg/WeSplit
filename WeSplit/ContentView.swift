@@ -4,25 +4,25 @@
 //
 //  Created by Omar Bakry on 25/11/2021.
 
-// @State tag for rebuild ui and change the value of its var
-// Button takes a title and a closure for actions.
-// Vstack like column in flutter , HStack like row and zStack like stack in flutter
-// $ => in swift ui use a dollar sign to binding the var that make it writing it and store it this is binding
+// picker for picking multi choeses
+// \.self that mean look up in the arry it self because the id is strings it self
+// we use set because the id its string it self so it will protect us from duplicate
+// when you use set/dict in foreach you must sorted it using .sorted()
 
 import SwiftUI
 
 struct ContentView: View {
-    @State private var tapCount : Int = 0
-    @State private var name : String = ""
+    let stringArr : Set<String> = ["Omar","Salem","Bakry"]
+    @State private var selectedStud = "Omar"
     var body: some View {
-        VStack {
+        NavigationView {
             Form {
-                TextField("Type your name", text: $name)
-                Text("Your name is \(name)")
+                Picker("Select your student", selection: $selectedStud, content: {
+                    ForEach(stringArr.sorted(), id : \.self, content: {
+                        Text($0)
+                    })
+                })
             }
-            Button("Tap Count \(tapCount)", action: {
-                tapCount += 1
-            })
         }
     }
 }
