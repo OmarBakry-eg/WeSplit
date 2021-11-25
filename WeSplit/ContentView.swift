@@ -4,15 +4,18 @@
 //
 //  Created by Omar Bakry on 25/11/2021.
 
-//When trying to add an eleven static content in your list, stack, form you'll get an exeception
-// so in your form you could add group or section to fit this err
+// Form is scrollable
+// navigation view left a space at above
+//naviagtion view title could be inline like app bar in flutter or automatic like Hacker news app
+// when you trying to add a title to navigation view just make sure you add it the brackets before its bracket
+
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        
-        Form {
+      NavigationView  {
+            Form {
          Group  {
             Text("Hello, world!")
             Text("Hello, world!")
@@ -22,7 +25,7 @@ struct ContentView: View {
             Text("Hello, world!")
          }
             
-         Section{
+        Group{
             Text("Hello, world!")
             Text("Hello, world!")
             Text("Hello, world!")
@@ -31,7 +34,12 @@ struct ContentView: View {
             
          }
             
-        }
+        }.padding(.horizontal) // bracket before its brackets (form bracket)
+            
+            .navigationTitle("Swift UI")
+            .navigationBarTitleDisplayMode(.inline)
+        
+        } // navigation view 
         
     }
 }
