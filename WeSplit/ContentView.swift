@@ -4,43 +4,26 @@
 //
 //  Created by Omar Bakry on 25/11/2021.
 
-// Form is scrollable
-// navigation view left a space at above
-//naviagtion view title could be inline like app bar in flutter or automatic like Hacker news app
-// when you trying to add a title to navigation view just make sure you add it the brackets before its bracket
-
+// @State tag for rebuild ui and change the value of its var
+// Button takes a title and a closure for actions.
+// Vstack like column in flutter , HStack like row and zStack like stack in flutter
+// $ => in swift ui use a dollar sign to binding the var that make it writing it and store it this is binding
 
 import SwiftUI
 
 struct ContentView: View {
+    @State private var tapCount : Int = 0
+    @State private var name : String = ""
     var body: some View {
-      NavigationView  {
+        VStack {
             Form {
-         Group  {
-            Text("Hello, world!")
-            Text("Hello, world!")
-            Text("Hello, world!")
-            Text("Hello, world!")
-            Text("Hello, world!")
-            Text("Hello, world!")
-         }
-            
-        Group{
-            Text("Hello, world!")
-            Text("Hello, world!")
-            Text("Hello, world!")
-            Text("Hello, world!")
-            Text("Hello, world!")
-            
-         }
-            
-        }.padding(.horizontal) // bracket before its brackets (form bracket)
-            
-            .navigationTitle("Swift UI")
-            .navigationBarTitleDisplayMode(.inline)
-        
-        } // navigation view 
-        
+                TextField("Type your name", text: $name)
+                Text("Your name is \(name)")
+            }
+            Button("Tap Count \(tapCount)", action: {
+                tapCount += 1
+            })
+        }
     }
 }
 
